@@ -2,7 +2,7 @@ torch
 torchvision
 transformers
 numpy
-Pillow
+pillow
 scikit-learn
 pandas
 
