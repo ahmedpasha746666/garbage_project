@@ -1,32 +1,27 @@
-Garbage Classification using Vision Transformer (ViT)
-📌 Project Overview
+# Garbage Classification using Vision Transformer (ViT)
 
-This project implements an end-to-end image classification system using a Vision Transformer (ViT) model to classify garbage images into multiple classes.
-The project follows best practices, including model evaluation, testing, Dockerization, and CI/CD automation.
+## 📌 Project Overview
 
-🎯 Objectives
+This project implements an end-to-end image classification system using a Vision Transformer (ViT) model to classify garbage images into multiple classes. The project follows best practices, including model evaluation, testing, and CI/CD automation.
 
-Train a ViT-based image classification model
+## 🎯 Objectives
 
-Evaluate model performance using multiple metrics
+- Train a ViT-based image classification model
+- Evaluate model performance using multiple metrics
+- Save and reuse the trained model
+- Automate testing and builds using CI/CD
+- Provide reproducible setup instructions
 
-Save and reuse the trained model
+## 🧠 Model Information
 
-Automate testing and builds using CI/CD
+- **Model Type:** Vision Transformer (ViT)
+- **Base Model:** google/vit-base-patch16-224
+- **Framework:** PyTorch + HuggingFace Transformers
+- **Saved Model Path:** `model/best_vit_model.pth`
 
-Provide a reproducible environment using Docker
+## 📂 Project Structure
 
-🧠 Model Information
-
-Model Type: Vision Transformer (ViT)
-
-Base Model: google/vit-base-patch16-224
-
-Framework: PyTorch + HuggingFace Transformers
-
-Saved Model Path: model/best_vit_model.pth
-
-📂 Project Structure
+```
 GARBAGE/
 │
 ├── .github/workflows/
@@ -61,118 +56,120 @@ GARBAGE/
 ├── tests/
 │   └── test_model.py             # Unit tests
 │
-├── Dockerfile                    # Docker configuration
 ├── requirements.txt              # Project dependencies
 ├── README.md                     # Project documentation
 └── .gitignore
+```
 
-🏋️ Model Training
+## 🏋️ Model Training
 
-Model training is performed using the notebook:
+Model training is performed using the notebook: `src/train.ipynb`
 
-src/train.ipynb
+### Training Workflow:
 
-Training Workflow:
+1. Load images from the `data/` directory
+2. Apply ViT image preprocessing
+3. Fine-tune the ViT model
+4. Save the best model to `model/best_vit_model.pth`
 
-Load images from the data/ directory
+## 🔍 Model Evaluation
 
-Apply ViT image preprocessing
+All evaluation artifacts are stored in the `eval/` folder.
 
-Fine-tune the ViT model
+### Evaluation Includes:
 
-Save the best model to model/best_vit_model.pth
+- **Accuracy** (overall & per-class)
+- **Precision, Recall, F1-score**
+- **Confusion Matrix** (raw & normalized)
+- **Confidence analysis** per class
+- **Visual reports** (heatmaps, radar charts, bar plots)
 
-🔍 Model Evaluation
-
-All evaluation artifacts are stored in the eval/ folder.
-
-Evaluation Includes:
-
-Accuracy (overall & per-class)
-
-Precision, Recall, F1-score
-
-Confusion Matrix (raw & normalized)
-
-Confidence analysis per class
-
-Visual reports (heatmaps, radar charts, bar plots)
-
-🧪 Testing
+## 🧪 Testing
 
 Automated tests ensure model correctness.
 
-Run Tests:
+### Run Tests:
+
+```bash
 pytest
+```
 
+Test files are located in: `tests/test_model.py`
 
-Test files are located in:
+## 🔄 CI/CD Pipeline
 
-tests/test_model.py
+The project uses **GitHub Actions** for continuous integration and delivery.
 
-🐳 Docker Usage
-Build Docker Image
-docker build -t vit-garbage-classifier .
+**Pipeline file:** `.github/workflows/ci-cd.yaml`
 
-Run Docker Container
-docker run vit-garbage-classifier
+### CI/CD Tasks:
 
-🔄 CI/CD Pipeline
+- Code checkout
+- Dependency installation
+- Unit testing
+- Build validation
 
-The project uses GitHub Actions for continuous integration and delivery.
+## 📦 Local Setup
 
-Pipeline file:
+### 1. Create Virtual Environment
 
-.github/workflows/ci-cd.yaml
-
-CI/CD Tasks:
-
-Code checkout
-
-Dependency installation
-
-Unit testing
-
-Docker image build
-
-📦 Local Setup
-Create Virtual Environment
+```bash
+# Linux / Mac
 python -m venv venv
-source venv/bin/activate      # Linux / Mac
-venv\Scripts\activate         # Windows
+source venv/bin/activate
 
-Install Dependencies
+# Windows
+python -m venv venv
+venv\Scripts\activate
+```
+
+### 2. Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-🧰 Tech Stack
+### 3. Run Training
 
-Python
+Open and execute `src/train.ipynb` in Jupyter Notebook or JupyterLab.
 
-PyTorch
+### 4. Run Inference
 
-HuggingFace Transformers (ViT)
+Open and execute `src/predict.ipynb` to make predictions on new images.
 
-Scikit-learn
+## 🧰 Tech Stack
 
-Matplotlib & Seaborn
+- **Python**
+- **PyTorch**
+- **HuggingFace Transformers** (ViT)
+- **Scikit-learn**
+- **Matplotlib & Seaborn**
+- **Pytest**
+- **GitHub Actions**
 
-Pytest
+## 🚀 Future Improvements
 
-Docker
+- [ ] **MLflow** experiment tracking
+- [ ] **DVC + DagsHub** for data versioning
+- [ ] **REST API** using FastAPI
+- [ ] **Dockerization** for containerized deployment
+- [ ] **Cloud deployment** (AWS / GCP / Azure)
 
-GitHub Actions
+##  Author
 
-🚀 Future Improvements
+**Ahmed Pasha**  
+Machine Learning Engineer | MLOps Enthusiast
 
-MLflow experiment tracking
+---
 
-DVC + DagsHub for data versioning
+## 📄 License
 
-REST API using FastAPI
+This project is open-source and available under the MIT License.
 
-Cloud deployment (AWS / GCP / Azure)
+## 🤝 Contributing
 
-👨‍💻 Author
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
 
-Ahmed Pasha
-Machine Learning Engineer | MLOps Enthusias
+---
+
+**Happy Coding! 🚀**
